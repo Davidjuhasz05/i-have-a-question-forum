@@ -1,29 +1,164 @@
-# Compiled class file
+# -----------------------
+# OS / Editor / IDE
+# -----------------------
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# Swap / temp files
+*~
+*.swp
+*.swo
+
+# -----------------------
+# Node / Vite / React
+# -----------------------
+# Node modules & package manager logs
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite / build outputs
+dist/
+build/
+public/dist/
+.vite/
+.cache/
+.esbuild/
+
+# Environment files (local secrets)
+.env
+.env.local
+.env.*.local
+
+# Coverage / test reports
+coverage/
+.nyc_output/
+
+# Misc frontend
+*.tgz
+*.map
+
+# -----------------------
+# Java / Maven / Spring Boot
+# -----------------------
+# Build output
+/backend/target/
+/backend/build/
+
+# Maven local files
+log/
+*.log
 *.class
 
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+# Build artifacts
 *.jar
 *.war
-*.nar
 *.ear
-*.zip
+
+# Eclipse / NetBeans specific
+.settings/
+*.classpath
+*.project
+
+# Spring Boot devtools / extras (temp)
+spring-boot-devtools.properties
+
+# -----------------------
+# PostgreSQL / DB
+# -----------------------
+# Local DB files (if you run Postgres data in repo folders or docker volumes)
+**/pgdata/
+**/postgres-data/
+*.sql.gz
+
+# psql history
+.psql_history
+.pgpass
+
+# -----------------------
+# Docker
+# -----------------------
+# Docker generated files / override envs
+docker-compose.override.yml
+docker-compose.*.yml
+.env.docker
+.env.*.docker
+
+# Docker volumes (local data directories)
+**/docker-data/
+**/var/lib/postgresql/data/
+
+# Docker image tarballs / archives
+*.tar
 *.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# -----------------------
+# Kubernetes / kubectl
+# -----------------------
+# Local kube config / clusters
+.kube/
+kubeconfig
+kubeconfig.*
 
-*.iml
-target/
-.idea/
-/mvnw
-/mvnw.cmd
+# Generated manifests / temp
+*.kube.yaml
+*.kubernetes*
+
+# -----------------------
+# Terraform
+# -----------------------
+# Local terraform directories and state (sensitive)
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tfvars
+override.tfvars.json
+*.tfvars
+
+# -----------------------
+# CI / build artifacts / reports
+# -----------------------
+out/
+reports/
+target/coverage/
+
+# -----------------------
+# Secrets / sensitive files
+# -----------------------
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+secrets.yml
+*.secret
+*.enc
+
+# -----------------------
+# Misc / Tools
+# -----------------------
+# IDE / tool caches
+/.idea/
+/.vscode/
+/.tmp/
+.cache/
+
+# OS thumbnail & icon caches
+Icon?
+.desktop
