@@ -1,0 +1,55 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rds-init-job
+  namespace: app
+spec:
+  template:
+    spec:
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: backend-nodes
+      restartPolicy: Never
+      containers:
+        - name: rds-init
+          image: postgres:17
+          command:
+            - "sh"
+            - "-c"
+            - |
+              echo "Running init script..."
+              ls -l /startup
+              PGPASSWORD=$PGPASSWORD psql -h $DB_HOST -p $DB_PORT -U $DB_USER -d $DB_NAME -f /startup/startup.sql
+              echo "Finished init script."
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-init-secrets
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: db-init-secrets
+                  key: DB_PORT
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-init-secrets
+                  key: DB_USER
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-init-secrets
+                  key: DB_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-init-secrets
+                  key: DB_NAME
+          volumeMounts:
+            - name: startup-sql
+              mountPath: /startup
+      volumes:
+        - name: startup-sql
+          configMap:
+            name: startup-sql
