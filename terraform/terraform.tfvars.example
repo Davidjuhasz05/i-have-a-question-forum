@@ -1,0 +1,4 @@
+region = "YOUR_REGION"
+aws_access_key = "YOUR_ACCESS_KEY"
+aws_secret_key = "YOUR_SECRET_KEY"
+project_name = "YOUR_PROJECT_NAME"
